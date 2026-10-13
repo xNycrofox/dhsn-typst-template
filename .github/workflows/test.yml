@@ -1,0 +1,27 @@
+name: Test
+on:
+  push:
+  pull_request:
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v4
+      - name: Run tests
+        run: typst compile test.typ
+      - name: Compile examples
+        run: |
+          typst compile minimal.typ
+          typst compile simple.typ
+          typst compile cookbook.typ
+      - name: Compile the starting point created by typst init
+        run: |
+          mkdir -p packages/local/baarticle
+          ln -s "$PWD" packages/local/baarticle/0.1.0
+          typst init --package-path packages @local/baarticle:0.1.0 "$RUNNER_TEMP/paper"
+          typst compile --package-path packages "$RUNNER_TEMP/paper/document.typ"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: examples
+          path: "*.pdf"

@@ -1,0 +1,19 @@
+# git files
+**/.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# text files
+docs/* text eol=lf
+*.md text eol=lf
+LICENSE text eol=lf
+
+# text files
+*.bib text eol=lf
+*.csl text eol=lf
+*.tmTheme text eol=lf
+*.toml text eol=lf
+*.typ text eol=lf
+
+# images
+images/* binary
+template/images/* binary

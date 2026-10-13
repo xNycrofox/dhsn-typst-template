@@ -1,0 +1,17 @@
+# documents compiled with Typst
+*.pdf
+# keep pdf files, which are included into documents, by adding exceptions here
+# !assignment.pdf
+!docs/assets/**/*.pdf
+
+# Jekyll, used to build the documentation
+docs/_site
+docs/.jekyll-cache
+docs/.sass-cache
+
+# macOS: custom attributes in directory
+.DS_Store
+
+# editors
+.idea
+.vscode
