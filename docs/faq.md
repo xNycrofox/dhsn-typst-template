@@ -98,4 +98,4 @@ Put set and show rules after the show rule of the template, e.g. `#set text(font
 
 ### How to get a newer version of the template?
 
-Execute `git pull` in the directory of the template, see [template setup](setup/template.md).
+Install the new version from the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page next to the old one and change the version in the import, see [template setup](setup/template.md).

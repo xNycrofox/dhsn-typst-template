@@ -9,8 +9,8 @@ echo "$new" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo "expected a version 
 old=$(sed -n 's/^version = "\(.*\)"$/\1/p' typst.toml)
 escaped=$(echo "$old" | sed 's/\./\\./g')
 
-files=$(grep -rlE "dhsnarticle[:/\\\\]$escaped" README.md docs template --include='*.md' --include='*.typ')
+files=$(grep -rlE "(dhsnarticle[:/\\\\-]|download/v)$escaped" README.md docs template --include='*.md' --include='*.typ')
 for file in typst.toml $files; do
-    sed -E "s/(dhsnarticle[:\/\\\\]|^version = \")$escaped/\1$new/g" "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+    sed -E "s/(dhsnarticle[:\/\\\\-]|download\/v|^version = \")$escaped/\1$new/g" "$file" > "$file.tmp" && mv "$file.tmp" "$file"
 done
 sh scripts/check-version.sh

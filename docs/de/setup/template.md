@@ -8,28 +8,39 @@ title: Template
 
 Das ist der empfohlene Weg, das Template zu nutzen.
 Typst sucht lokale Pakete in einem bestimmten Verzeichnis deines Benutzerkontos.
-Klone das Template unter dem Namen `dhsnarticle/0.1.0` in dieses Verzeichnis.
+Jede Version des Templates wird als ZIP-Datei auf der Seite [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) veröffentlicht.
+Lade `dhsnarticle-0.1.0.zip` herunter und entpacke es in dieses Verzeichnis, sodass `local/dhsnarticle/0.1.0/typst.toml` existiert.
+Die folgenden Befehle erledigen genau das.
 
 Windows (PowerShell):
 
-```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$env:APPDATA\typst\packages\local\dhsnarticle\0.1.0"
+```powershell
+$packages = "$env:APPDATA\typst\packages\local"
+New-Item -ItemType Directory -Force $packages | Out-Null
+Invoke-WebRequest https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip -OutFile "$env:TEMP\dhsnarticle.zip"
+Expand-Archive "$env:TEMP\dhsnarticle.zip" -DestinationPath $packages -Force
 ```
 
 macOS:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/Library/Application Support/typst/packages/local"
+cd "$HOME/Library/Application Support/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 Linux:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/.local/share/typst/packages/local"
+cd "$HOME/.local/share/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 ::: info
-Ohne git: Lade `dhsnarticle-0.1.0.zip` von der Seite [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) herunter und entpacke es in das Verzeichnis `local` der obigen Pfade, sodass `local/dhsnarticle/0.1.0/typst.toml` existiert.
+Das Verzeichnis ist `%APPDATA%\typst\packages\local` unter Windows, `~/Library/Application Support/typst/packages/local` unter macOS und `~/.local/share/typst/packages/local` unter Linux, falls du die Datei lieber von Hand herunterlädst und entpackst.
 :::
 
 Jetzt lässt sich das Template in jedem Dokument mit `#import "@local/dhsnarticle:0.1.0": *` importieren.
@@ -45,6 +56,17 @@ somedirectory
 ```
 
 Fertig! (Die benötigten Bilder musst du trotzdem noch besorgen, siehe unten.)
+
+## Git
+
+Nimm git statt eines Release, wenn du den neuesten Stand des Templates zwischen zwei Releases brauchst oder selbst etwas beitragen möchtest.
+Klone das [Repository](https://github.com/xNycrofox/dhsn-typst-template) unter dem Namen `dhsnarticle/0.1.0` in das Verzeichnis für lokale Pakete, z. B. unter macOS:
+
+```sh
+git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
+```
+
+`git pull` in diesem Verzeichnis aktualisiert das Template. Bedenke, dass sich die Formatierung deiner Arbeit mit jedem Update ändern kann.
 
 ## Download
 
@@ -88,15 +110,13 @@ Lade die im Abschnitt Download genannten Dateien in dein Projekt in der [Typst W
 
 ## Template aktualisieren
 
-Führe `git pull` im Verzeichnis des Templates aus, um den neuesten Stand zu erhalten.
-Kompiliere deine Arbeit danach und prüfe das Ergebnis, denn die Formatierung kann sich geändert haben.
-
-Jede Version des Templates wird außerdem auf der Seite [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) veröffentlicht, zusammen mit den kompilierten Beispielen.
-Eine neue Version hat eine neue Nummer, z. B. `0.2.0`, und wird neben der alten in einem nach dieser Nummer benannten Verzeichnis installiert.
+Eine neue Version des Templates hat eine neue Nummer, z. B. `0.2.0`, und wird auf der Seite [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) veröffentlicht, zusammen mit den kompilierten Beispielen.
+Installiert wird sie genauso wie die erste. Sie liegt dann neben der alten Version in einem nach ihrer Nummer benannten Verzeichnis.
 Deine Arbeit verwendet weiter die im Import genannte Version, bis du `#import "@local/dhsnarticle:0.1.0": *` änderst. Ein Update verändert eine Arbeit also nie versehentlich.
+Kompiliere deine Arbeit nach dem Wechsel der Version und prüfe das Ergebnis, denn die Formatierung kann sich geändert haben.
 
 ::: tip
-Mit `git clone --branch v0.1.0 ...` klonst du eine bestimmte Version, falls du git der ZIP-Datei vorziehst. Bleibe während einer Abschlussarbeit bei einer Version.
+Bleibe während einer Abschlussarbeit bei einer Version.
 :::
 
 # Benötigte Bilder besorgen

@@ -98,4 +98,4 @@ Setze set- und show-Regeln hinter die show-Regel des Templates, z. B. `#set text
 
 ### Wie bekomme ich eine neuere Version des Templates?
 
-Führe `git pull` im Verzeichnis des Templates aus, siehe [Einrichtung des Templates](setup/template.md).
+Installiere die neue Version von der Seite [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) neben der alten und ändere die Version im Import, siehe [Einrichtung des Templates](setup/template.md).

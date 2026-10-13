@@ -8,28 +8,39 @@ title: Template
 
 This is the recommended way to use the template.
 Typst looks up local packages in a certain directory of your user account.
-Clone the template into that directory under the name `dhsnarticle/0.1.0`.
+Each version of the template is published as a ZIP file on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page.
+Download `dhsnarticle-0.1.0.zip` and extract it into that directory, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
+The following commands do exactly that.
 
 Windows (PowerShell):
 
-```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$env:APPDATA\typst\packages\local\dhsnarticle\0.1.0"
+```powershell
+$packages = "$env:APPDATA\typst\packages\local"
+New-Item -ItemType Directory -Force $packages | Out-Null
+Invoke-WebRequest https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip -OutFile "$env:TEMP\dhsnarticle.zip"
+Expand-Archive "$env:TEMP\dhsnarticle.zip" -DestinationPath $packages -Force
 ```
 
 macOS:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/Library/Application Support/typst/packages/local"
+cd "$HOME/Library/Application Support/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 Linux:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/.local/share/typst/packages/local"
+cd "$HOME/.local/share/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 ::: info
-Without git download `dhsnarticle-0.1.0.zip` from the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page and extract it into the `local` directory of the paths above, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
+The directory is `%APPDATA%\typst\packages\local` on Windows, `~/Library/Application Support/typst/packages/local` on macOS and `~/.local/share/typst/packages/local` on Linux, in case you prefer to download and extract the file by hand.
 :::
 
 Now the template can be imported in any document with `#import "@local/dhsnarticle:0.1.0": *`.
@@ -45,6 +56,17 @@ somedirectory
 ```
 
 Done! (Still you have to get the required images as described below.)
+
+## Git
+
+Use git instead of a release if you want the newest state of the template between two releases or plan to contribute.
+Clone the [repository](https://github.com/xNycrofox/dhsn-typst-template) into the directory for local packages under the name `dhsnarticle/0.1.0`, e.g. on macOS:
+
+```sh
+git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
+```
+
+`git pull` in that directory updates the template. Keep in mind that the formatting of your paper may change with every update.
 
 ## Download
 
@@ -88,15 +110,13 @@ Upload the files listed in the Download section to your project in the [Typst we
 
 ## Updating the template
 
-Execute `git pull` in the directory of the template to get the newest state of the template.
-Compile your paper afterwards and check the result, as the formatting may have changed.
-
-Each version of the template is also published on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page together with the compiled examples.
-A new version has a new number, e.g. `0.2.0`, and is installed next to the old one in a directory named after that number.
+A new version of the template has a new number, e.g. `0.2.0`, and is published on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page together with the compiled examples.
+Install it the same way as the first one. It is placed next to the old version in a directory named after its number.
 Your paper keeps using the version named in its import until you change `#import "@local/dhsnarticle:0.1.0": *`, so an update never changes a paper by accident.
+Compile your paper after changing the version and check the result, as the formatting may have changed.
 
 ::: tip
-Clone a certain version with `git clone --branch v0.1.0 ...` if you prefer git over the ZIP file. Stick to one version while writing a thesis.
+Stick to one version while writing a thesis.
 :::
 
 # Get the required images

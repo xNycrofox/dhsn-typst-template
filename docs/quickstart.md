@@ -16,28 +16,39 @@ Nothing else is required. Typst is a single program, which already bundles the f
 ## Download the template
 
 Typst looks up local packages in a certain directory of your user account.
-Clone the template into that directory under the name `dhsnarticle/0.1.0`.
+Each version of the template is published as a ZIP file on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page.
+Download `dhsnarticle-0.1.0.zip` and extract it into that directory, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
+The following commands do exactly that.
 
 Windows (PowerShell):
 
-```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$env:APPDATA\typst\packages\local\dhsnarticle\0.1.0"
+```powershell
+$packages = "$env:APPDATA\typst\packages\local"
+New-Item -ItemType Directory -Force $packages | Out-Null
+Invoke-WebRequest https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip -OutFile "$env:TEMP\dhsnarticle.zip"
+Expand-Archive "$env:TEMP\dhsnarticle.zip" -DestinationPath $packages -Force
 ```
 
 macOS:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/Library/Application Support/typst/packages/local"
+cd "$HOME/Library/Application Support/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 Linux:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/typst/packages/local/dhsnarticle/0.1.0"
+mkdir -p "$HOME/.local/share/typst/packages/local"
+cd "$HOME/.local/share/typst/packages/local"
+curl -LO https://github.com/xNycrofox/dhsn-typst-template/releases/download/v0.1.0/dhsnarticle-0.1.0.zip
+unzip dhsnarticle-0.1.0.zip && rm dhsnarticle-0.1.0.zip
 ```
 
 ::: info
-Without git download `dhsnarticle-0.1.0.zip` from the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page and extract it into the `local` directory of the paths above, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
+The directory is `%APPDATA%\typst\packages\local` on Windows, `~/Library/Application Support/typst/packages/local` on macOS and `~/.local/share/typst/packages/local` on Linux, in case you prefer to download and extract the file by hand.
 :::
 
 Afterwards create a directory, which will hold all the files required for your paper, by executing `typst init @local/dhsnarticle:0.1.0 somedirectory`.
