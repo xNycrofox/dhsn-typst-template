@@ -32,6 +32,7 @@ jobs:
         if: steps.version.outputs.released == 'false'
         run: |
           typst compile --root . tests/test.typ
+          mkdir -p dist-examples
           for name in minimal simple cookbook; do
             typst compile --root . "examples/$name.typ" "dist-examples/$name.pdf"
           done
