@@ -48,7 +48,7 @@ The source files are commented rather extensively.
 - `template/` contains the starting point created by `typst init`, including the logo of the university and a placeholder for the signature.
 - `examples/` contains example documents, which use the images of `template/`.
 - `tests/` contains some sort of unit tests.
-- `docs/` contains the documentation.
+- `docs/` contains the documentation in English, `docs/de/` its German translation.
 - `scripts/` contains helpers to check and bump the version and to create the archive of a release.
 
 ## Development
@@ -107,7 +107,7 @@ The following vs code extensions are helpful to format the files:
 
 ## Credits and License
 
-This template is based on the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template), originally crafted by [Nuckal777](https://github.com/Nuckal777) and maintained by its [contributors](https://github.com/ba-dresden/ba-latex-template/graphs/contributors). Layout, texts and behavior are taken from its `baarticle` document class.
+This template is based on the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template), created and maintained by its [contributors](https://github.com/ba-dresden/ba-latex-template/graphs/contributors). Layout, texts and behavior are taken from its `baarticle` document class.
 
 Like the LaTeX template this template is released into the public domain, see [LICENSE](https://github.com/xNycrofox/dhsn-typst-template/blob/main/LICENSE).
 The logo of the Duale Hochschule Sachsen in `template/images/logo.png` is not covered by that license. It belongs to the university and is included for use in papers handed in there. `template/images/signature.png` is a placeholder to be replaced with your own signature.

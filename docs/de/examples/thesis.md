@@ -1,0 +1,116 @@
+---
+title: Bachelorarbeit
+---
+
+# Bachelorarbeit
+
+Eine auf mehrere Dateien verteilte Abschlussarbeit mit allen Teilen, die der Leitfaden verlangt.
+
+```text
+thesis
+|-thesis.typ
+|-thesis.bib
+|-assignment.pdf
+|-chapters|-introduction.typ
+|-chapters|-basics.typ
+|-chapters|-conclusion.typ
+|-images|-logo.png
+|-images|-signature.png
+```
+
+`thesis.typ`:
+
+```typst
+#import "@local/dhsnarticle:0.1.0": *
+
+#show: dhsnsimple.with(
+  first: "Erika",
+  last: "Mustermann",
+  company: "Beispiel GmbH",
+  location: "Dresden",
+  img: image("images/logo.png"),
+  course: "Informationstechnik",
+  title: "Einführung einer Container-Plattform in einem mittelständischen Unternehmen",
+  // the title is too long for the header
+  headertitle: "Einführung einer Container-Plattform",
+  number: 1234567,
+  corrector: ("Prof. Dr. Max Beispiel", "Dipl.-Inf. Eva Muster"),
+  themedate: datetime(year: 2026, month: 7, day: 6),
+  returndate: datetime(year: 2026, month: 9, day: 28),
+  signature: image("images/signature.png"),
+  companylocation: "Radebeul",
+  type: "thesis",
+  degreetype: "Engineering",
+  assignment: image("assignment.pdf"),
+  ainotice: true,
+  aimodel: ("Claude", "DeepL Write"),
+  gendernotice: true,
+  abstract: [
+    Diese Arbeit untersucht ...
+  ],
+  acronyms: (
+    CI: "Continuous Integration",
+    K8s: "Kubernetes",
+  ),
+  glossary: (
+    container: (
+      name: "Container",
+      description: [Eine isolierte Laufzeitumgebung für Anwendungen.],
+    ),
+  ),
+  bibliography: bibliography("thesis.bib"),
+)
+
+#include "chapters/introduction.typ"
+#include "chapters/basics.typ"
+#include "chapters/conclusion.typ"
+
+#dhsnappx[
+  #dhsnfigure[Architektur der Plattform][
+    #image("images/logo.png", width: 10cm)
+  ]
+]
+```
+
+`chapters/introduction.typ`:
+
+```typst
+#import "@local/dhsnarticle:0.1.0": *
+
+= Einleitung <einleitung>
+
+== Motivation
+#gls("K8s") hat sich als Standard etabliert.#vglcite(<cloudcomp>)[17-21]
+Ein #gls("container") ist ...
+
+== Aufbau der Arbeit
+Die Grundlagen werden in @grundlagen beschrieben.
+```
+
+`chapters/basics.typ`:
+
+```typst
+#import "@local/dhsnarticle:0.1.0": *
+
+= Grundlagen <grundlagen>
+
+#dhsnfigure(source: captioncite(<cloudcomp>)[12], label: "schichten")[Schichten einer Plattform][
+  #image("../images/logo.png", width: 8cm)
+]
+
+Wie @schichten zeigt ...
+```
+
+::: info
+Pfade sind relativ zu der Datei, in der sie stehen. Deshalb verweist das Kapitel mit `../images/logo.png` auf das Bild. `/images/logo.png` funktioniert in jeder Datei, weil der Pfad beim Verzeichnis der Hauptdatei beginnt.
+:::
+
+Kompiliert wird die Arbeit mit `typst compile thesis.typ`.
+
+## Masterarbeit
+
+Setze `type: "master-thesis"`. Auf der Titelseite steht dann „Masterarbeit zur Erlangung des Abschlusses Master of Engineering“.
+
+## Ohne Sperrvermerk
+
+Setze `blocknotice: false`, wenn die Arbeit keine vertraulichen Daten enthält.

@@ -34,6 +34,13 @@ The official [guide for LaTeX users](https://typst.app/docs/guides/guide-for-lat
 | `\include{chapter1}`                          | `#include "chapter1.typ"`                                 |
 | `\lstset{style=github-dark}`                  | `codetheme: "github-dark"`                                |
 
+## What stays the same
+
+The appearance follows the LaTeX class `baarticle`. Two things, which are often taken for deviations, behave the same there:
+
+- The title of the paper is printed in the header of every page with a line below. In LaTeX the option `noheader` disables it, here `header: false`.
+- `dhsnfigure` draws a frame around its content, also in the appendix, just like `bafigure` puts its content into a `\fbox`. Code is framed as well, like with `frame=single` of the listings package. Content gets no frame if it is not placed in a `dhsnfigure`, e.g. in a `dhsntable` or directly in the document.
+
 ## Differences
 
 - Images, the assignment and the bibliography are passed as `image("path")` and `bibliography("path")` instead of their path, because Typst resolves paths relative to the file they are written in.

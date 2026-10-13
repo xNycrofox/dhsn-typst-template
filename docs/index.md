@@ -47,9 +47,7 @@ features:
 A template, which tries to follow the
 [DHSN Dresden Styleguide](https://dresden.ba-sn.de/fileadmin/M3__BA_Dresden/downloads/zentrale-dokumente/Leitfaden_wissentschaftliche_Arbeiten.pdf)
 as close as possible.
-It is the Typst counterpart of the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template), with which papers and bachelors theses have already passed assessments.
-Built with love and sane defaults by [Nuckal777](https://github.com/Nuckal777).
-Minor adjustments come from Steffen Greiffenberg [sgreiffenberg](https://github.com/sgreiffenberg).
+It is the Typst counterpart of the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template), with which papers and bachelors theses have already passed assessments, and builds on the work of its contributors.
 If this template served you well, do not forget to click the star button on
 [GitHub](https://github.com/xNycrofox/dhsn-typst-template).
 It will be appreciated.

@@ -70,6 +70,14 @@ See [citations](usage/citations.md).
 
 Use `headertitle: "A shorter title"` or `header: false`.
 
+### Why is the title printed at the top of every page?
+
+This is the behavior of the LaTeX template, which puts the title into the header by default. `header: false` removes the header.
+
+### Why are figures framed, even in the appendix?
+
+`dhsnfigure` always draws a frame around its content, like `bafigure` of the LaTeX template. Put content, which should not be framed, into a `dhsntable` or directly into the document.
+
 ### A table or figure should break across pages
 
 `dhsnfigure` and `dhsntable` keep their content on one page. Split the content or put a `table` directly into the document.

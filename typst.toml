@@ -2,7 +2,7 @@
 name = "dhsnarticle"
 version = "0.1.0"
 entrypoint = "lib.typ"
-authors = ["Nuckal777", "DHSN Dresden template contributors", "Elias Müller"]
+authors = ["xNycrofox"]
 license = "Unlicense"
 description = "Template for papers and theses following the DHSN Dresden styleguide"
 repository = "https://github.com/xNycrofox/dhsn-typst-template"

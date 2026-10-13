@@ -35,6 +35,10 @@ Let's describe the optional arguments shortly:
 A reference like `@label` renders to "Abbildung 1". To get the number only use `#ref(<label>, supplement: none)`. If the label is the caption and contains spaces, the reference has to be written as `#ref(label("the caption"))`.
 :::
 
+::: info
+The frame matches the LaTeX template and is drawn in the appendix as well. Content without a frame belongs into a `dhsntable` or directly into the document.
+:::
+
 ## dhsntable
 
 The `dhsntable` function centers its content and adds an entry to the list of table.
