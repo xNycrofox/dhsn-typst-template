@@ -13,7 +13,7 @@ The files are stored on servers of a third party. Take care regarding confidenti
 ## Setting up a project
 
 1. Create an account and an empty project.
-2. Download the [ZIP file](https://github.com/xNycrofox/dhsn-typst-template/archive/refs/heads/main.zip) of the template and extract it.
+2. Download the ZIP file of the latest [release](https://github.com/xNycrofox/dhsn-typst-template/releases) of the template and extract it.
 3. Upload `lib.typ`, `dhsn.csl`, `dhsn-intext.csl` and the directory `themes` to the project, keeping the directory structure.
 4. Upload the logo `template/images/logo.png` as `images/logo.png`.
 5. Upload an image of your signature as `images/signature.png`.

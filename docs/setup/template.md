@@ -29,7 +29,7 @@ git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/t
 ```
 
 ::: info
-Without git download the [ZIP file](https://github.com/xNycrofox/dhsn-typst-template/archive/refs/heads/main.zip) of the template and extract its content into that directory, so that `dhsnarticle/0.1.0/typst.toml` exists.
+Without git download `dhsnarticle-0.1.0.zip` from the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page and extract it into the `local` directory of the paths above, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
 :::
 
 Now the template can be imported in any document with `#import "@local/dhsnarticle:0.1.0": *`.
@@ -88,8 +88,16 @@ Upload the files listed in the Download section to your project in the [Typst we
 
 ## Updating the template
 
-Execute `git pull` in the directory of the template to get the newest version.
+Execute `git pull` in the directory of the template to get the newest state of the template.
 Compile your paper afterwards and check the result, as the formatting may have changed.
+
+Each version of the template is also published on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page together with the compiled examples.
+A new version has a new number, e.g. `0.2.0`, and is installed next to the old one as `dhsnarticle/0.2.0`.
+Your paper keeps using the version named in its import until you change `#import "@local/dhsnarticle:0.1.0": *`, so an update never changes a paper by accident.
+
+::: tip
+Clone a certain version with `git clone --branch v0.1.0 ...` if you prefer git over the ZIP file. Stick to one version while writing a thesis.
+:::
 
 # Get the required images
 

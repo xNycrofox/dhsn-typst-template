@@ -37,7 +37,7 @@ git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/t
 ```
 
 ::: info
-Without git download the [ZIP file](https://github.com/xNycrofox/dhsn-typst-template/archive/refs/heads/main.zip) of the template and extract its content into that directory, so that `dhsnarticle/0.1.0/typst.toml` exists.
+Without git download `dhsnarticle-0.1.0.zip` from the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page and extract it into the `local` directory of the paths above, so that `local/dhsnarticle/0.1.0/typst.toml` exists.
 :::
 
 Afterwards create a directory, which will hold all the files required for your paper, by executing `typst init @local/dhsnarticle:0.1.0 somedirectory`.

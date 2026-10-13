@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: typst-community/setup-typst@v4
+      - name: Check that the version is consistent
+        run: sh scripts/check-version.sh
       - name: Run tests
         run: typst compile --root . tests/test.typ
       - name: Compile examples

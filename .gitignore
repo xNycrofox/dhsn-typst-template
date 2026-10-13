@@ -17,3 +17,7 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 # compiled examples, created by docs/scripts/build-examples.sh
 docs/public/examples
+
+# created by scripts/package.sh and the release workflow
+dist
+dist-examples

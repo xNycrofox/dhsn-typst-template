@@ -49,6 +49,7 @@ The source files are commented rather extensively.
 - `examples/` contains example documents, which use the images of `template/`.
 - `tests/` contains some sort of unit tests.
 - `docs/` contains the documentation.
+- `scripts/` contains helpers to check and bump the version and to create the archive of a release.
 
 ## Development
 
@@ -76,6 +77,22 @@ npm run examples
 # starts a local server with live reload
 npm run dev
 ```
+
+## Releasing
+
+The version in `typst.toml` is the single source of truth. A release is created automatically as soon as a new version reaches the `main` branch:
+
+```sh
+# sets the version in typst.toml, the starting point and the documentation
+sh scripts/bump-version.sh 0.2.0
+git commit -am "Release 0.2.0"
+git push
+```
+
+The release workflow then runs the tests, creates `dhsnarticle-<version>.zip` containing the files of the package only, checks that a paper can be created from it and publishes the release `v<version>` with generated release notes, the archive and the compiled examples.
+Pushes, which do not change the version, do not create a release. The workflow can also be started manually and does nothing if the version is already released.
+
+Increase the patch version for fixes without visible changes, the minor version for changes of the layout or new features and the major version for changes requiring adjustments of existing papers.
 
 ## Formatting
 

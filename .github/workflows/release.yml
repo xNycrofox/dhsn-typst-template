@@ -1,0 +1,62 @@
+name: Release
+# A release is created whenever the version in typst.toml changes on the main branch
+# and no release of that version exists yet. It can also be started manually.
+on:
+  push:
+    branches: [main]
+    paths: [typst.toml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Determine the version
+        id: version
+        run: |
+          version=$(sh scripts/check-version.sh)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if gh release view "v$version" > /dev/null 2>&1; then
+            echo "v$version is already released, nothing to do"
+            echo "released=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "released=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: typst-community/setup-typst@v4
+        if: steps.version.outputs.released == 'false'
+      - name: Run tests and compile examples
+        if: steps.version.outputs.released == 'false'
+        run: |
+          typst compile --root . tests/test.typ
+          for name in minimal simple cookbook; do
+            typst compile --root . "examples/$name.typ" "dist-examples/$name.pdf"
+          done
+      - name: Create the archive of the package
+        if: steps.version.outputs.released == 'false'
+        run: sh scripts/package.sh
+      - name: Check the archive by creating a paper from it
+        if: steps.version.outputs.released == 'false'
+        run: |
+          mkdir -p "$RUNNER_TEMP/packages/local"
+          unzip -q "dist/dhsnarticle-$VERSION.zip" -d "$RUNNER_TEMP/packages/local"
+          typst init --package-path "$RUNNER_TEMP/packages" "@local/dhsnarticle:$VERSION" "$RUNNER_TEMP/paper"
+          typst compile --package-path "$RUNNER_TEMP/packages" "$RUNNER_TEMP/paper/document.typ"
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+      - name: Create the release
+        if: steps.version.outputs.released == 'false'
+        run: |
+          gh release create "v$VERSION" \
+            "dist/dhsnarticle-$VERSION.zip" \
+            dist-examples/*.pdf \
+            --target "$GITHUB_SHA" \
+            --title "v$VERSION" \
+            --generate-notes \
+            --notes "Extract \`dhsnarticle-$VERSION.zip\` into the directory for local Typst packages, see the [documentation](https://xnycrofox.github.io/dhsn-typst-template/setup/template). The PDF files show the examples compiled with this version."
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
