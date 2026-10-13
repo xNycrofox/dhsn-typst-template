@@ -1,6 +1,5 @@
 ---
 title: Report
-sort: 2
 ---
 
 # Report and student research project
@@ -8,9 +7,9 @@ sort: 2
 Smaller papers like a "Belegarbeit" or "Studienarbeit" usually need neither a block notice nor an assignment.
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "Erika",
   last: "Mustermann",
   company: "Beispiel GmbH",
@@ -38,7 +37,7 @@ Smaller papers like a "Belegarbeit" or "Studienarbeit" usually need neither a bl
 Any other value of `type` is printed as it is, e.g. for a "Praxisbericht".
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   type: "Praxisbericht im 3. Semester",
 )
@@ -49,9 +48,9 @@ Any other value of `type` is printed as it is, e.g. for a "Praxisbericht".
 The [normal mode](../usage/normal) allows to pick the parts yourself, e.g. a paper consisting of title page, table of contents and content only.
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: baarticle.with(first: "Erika", last: "Mustermann", company: "Beispiel GmbH", location: "Dresden")
+#show: dhsnarticle.with(first: "Erika", last: "Mustermann", company: "Beispiel GmbH", location: "Dresden")
 
 #mktitle(
   title: "Vergleich von Message Brokern",

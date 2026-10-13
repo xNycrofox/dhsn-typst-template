@@ -1,24 +1,24 @@
 // Typst template implementing the DHSN Dresden Styleguide
-// Counterpart of the `baarticle` LaTeX document class, comments refer to the LaTeX commands where helpful
+// Counterpart of the `dhsnarticle` LaTeX document class, comments refer to the LaTeX commands where helpful
 
 // ---------------------------------------------------------------------------
 // Internal state
 // ---------------------------------------------------------------------------
 
-// options given to `baarticle` (first, last, company, location)
-#let _config = state("ba-config", (first: none, last: none, company: none, location: none))
+// options given to `dhsnarticle` (first, last, company, location)
+#let _config = state("dhsn-config", (first: none, last: none, company: none, location: none))
 // title of the paper, set by `mktitle` and shown in the header
-#let _title = state("ba-title", none)
+#let _title = state("dhsn-title", none)
 // numbering pattern of the page numbers, roman in the frontmatter and arabic afterwards
-#let _page-numbering = state("ba-page-numbering", "I")
-// whether the `baappx` environment is active
-#let _in-appx = state("ba-in-appx", false)
+#let _page-numbering = state("dhsn-page-numbering", "I")
+// whether the `dhsnappx` environment is active
+#let _in-appx = state("dhsn-in-appx", false)
 // whether content is currently rendered as part of an outline (ToC, LoF, LoT, ...)
-#let _in-outline = state("ba-in-outline", false)
+#let _in-outline = state("dhsn-in-outline", false)
 // defined acronyms and glossary entries and the keys already referenced with `gls`
-#let _acronyms = state("ba-acronyms", (:))
-#let _glossary = state("ba-glossary", (:))
-#let _gls-used = state("ba-gls-used", (:))
+#let _acronyms = state("dhsn-acronyms", (:))
+#let _glossary = state("dhsn-glossary", (:))
+#let _gls-used = state("dhsn-gls-used", (:))
 
 // ---------------------------------------------------------------------------
 // Lengths, matching a 12pt LaTeX article with \onehalfspacing
@@ -37,7 +37,7 @@
 #let _single-leading = 1.2em - _cap-height
 
 // kinds of the figures created by the environments
-#let _appx-kind = "ba-appx"
+#let _appx-kind = "dhsn-appx"
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -173,8 +173,8 @@
 )
 
 // Sets up page, fonts, spacing, headings, lists, captions and the bibliography style
-// Use it with `#show: baarticle.with(...)`
-#let baarticle(
+// Use it with `#show: dhsnarticle.with(...)`
+#let dhsnarticle(
   // first name of the author
   first: none,
   // last name of the author
@@ -328,7 +328,7 @@
   set bibliography(style: "dhsn.csl", title: "Literatur")
   show bibliography: set par(leading: _single-leading, spacing: 1.2em, justify: false)
   // citations are placed in footnotes, the cite commands of the template do that on their own
-  show cite: it => if it.at("label", default: none) == <ba-cite> { it } else { footnote(it) }
+  show cite: it => if it.at("label", default: none) == <dhsn-cite> { it } else { footnote(it) }
 
   body
 }
@@ -521,7 +521,7 @@
     used
   })
   // link to the entry in the list of abbreviations or glossary, if it gets printed
-  let target = label("ba-gls:" + key)
+  let target = label("dhsn-gls:" + key)
   if query(target).len() > 0 { link(target, body) } else { body }
 }
 
@@ -537,7 +537,7 @@
       row-gutter: 1em,
       ..entries
         .sorted(key: e => lower(e.at(0)))
-        .map(e => ([#strong(e.at(1))#label("ba-gls:" + e.at(0))], e.at(2)))
+        .map(e => ([#strong(e.at(1))#label("dhsn-gls:" + e.at(0))], e.at(2)))
         .flatten()
     )
     pagebreak(weak: true)
@@ -596,7 +596,7 @@
 // Environments
 // ---------------------------------------------------------------------------
 
-// helper shared by bafigure, batable and bacode
+// helper shared by dhsnfigure, dhsntable and dhsncode
 // creates a figure with a source reference in its caption, in the appendix the
 // figure is added to the list of appendix entries instead of the LoF, LoT or LoC
 #let _env(kind, supplement, title, source, label, placement, body) = context {
@@ -625,10 +625,10 @@
   [#fig#name]
 }
 
-// #bafigure(source: SOURCE, placement: auto, label: "LABEL")[title][content]
-// bafigure puts a frame around its content and adds a source reference below the figure
+// #dhsnfigure(source: SOURCE, placement: auto, label: "LABEL")[title][content]
+// dhsnfigure puts a frame around its content and adds a source reference below the figure
 // also adds a label which equals the given title
-#let bafigure(source: none, label: none, placement: none, title, body) = _env(
+#let dhsnfigure(source: none, label: none, placement: none, title, body) = _env(
   image,
   [Abbildung],
   title,
@@ -638,10 +638,10 @@
   block(width: 100%, stroke: 0.4pt, inset: 3pt, align(center, body)),
 )
 
-// #batable(source: SOURCE, placement: auto, label: "LABEL")[title][content]
-// batable centers the content and adds a source reference below the table
+// #dhsntable(source: SOURCE, placement: auto, label: "LABEL")[title][content]
+// dhsntable centers the content and adds a source reference below the table
 // also adds a label which equals the given title
-#let batable(source: none, label: none, placement: none, title, body) = _env(
+#let dhsntable(source: none, label: none, placement: none, title, body) = _env(
   table,
   [Tabelle],
   title,
@@ -651,10 +651,10 @@
   align(center, body),
 )
 
-// #bacode(source: SOURCE, label: "LABEL")[title][content]
-// bacode adds a source reference below the code / content
+// #dhsncode(source: SOURCE, label: "LABEL")[title][content]
+// dhsncode adds a source reference below the code / content
 // also adds a label which equals the given title
-#let bacode(source: none, label: none, title, body) = _env(
+#let dhsncode(source: none, label: none, title, body) = _env(
   raw,
   [Quelltext],
   title,
@@ -674,7 +674,7 @@
 #let theappx() = context counter(figure.where(kind: _appx-kind)).display()
 
 // Appendix environment
-#let baappx(body) = {
+#let dhsnappx(body) = {
   pagebreak(weak: true)
   _list-heading[Anhangverzeichnis]
   outline(title: none, target: figure.where(kind: _appx-kind))
@@ -704,12 +704,12 @@
   if supplement != none {
     supplement = [#supplement]
   }
-  [#cite(_as-label(key), supplement: supplement, ..args)<ba-cite>]
+  [#cite(_as-label(key), supplement: supplement, ..args)<dhsn-cite>]
 }
 
 // direct citation, creates a footnote like "Author (Year), S. 17."
 // the optional second argument describes the pages, `@key[17]` does the same
-#let bacite(key, ..pages) = footnote(_cite(key, pages))
+#let dhsncite(key, ..pages) = footnote(_cite(key, pages))
 
 // indirect citation, creates a footnote like "Vgl. Author (Year), S. 17."
 #let vglcite(key, ..pages) = footnote[Vgl. #_cite(key, pages)]
@@ -722,8 +722,8 @@
 // ---------------------------------------------------------------------------
 
 // Configures everything, so you do not have to worry about anything
-// Use it with `#show: basimple.with(...)`
-#let basimple(
+// Use it with `#show: dhsnsimple.with(...)`
+#let dhsnsimple(
   // first name of the author
   first: none,
   // last name of the author
@@ -788,7 +788,7 @@
   set document(title: title, author: first + " " + last) if (
     std.type(title) == str and std.type(first) == str and std.type(last) == str
   )
-  show: baarticle.with(
+  show: dhsnarticle.with(
     first: first,
     last: last,
     company: company,

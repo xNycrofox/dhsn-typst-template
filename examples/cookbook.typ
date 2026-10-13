@@ -1,12 +1,12 @@
 // Collection of snippets for common tasks, see the "Cookbook" page of the documentation
-#import "lib.typ": *
+#import "../lib.typ": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "Erika",
   last: "Mustermann",
   company: "Beispiel GmbH",
   location: "Dresden",
-  img: image("images/logo.png"),
+  img: image("../template/images/logo.png"),
   course: "Informationstechnik",
   title: "Kochbuch für das DHSN Typst Template",
   headertitle: "Kochbuch",
@@ -14,7 +14,7 @@
   corrector: ("Prof. Dr. Max Beispiel", "Dipl.-Inf. Eva Muster"),
   themedate: datetime(year: 2026, month: 7, day: 6),
   returndate: datetime(year: 2026, month: 9, day: 28),
-  signature: image("images/signature.png"),
+  signature: image("../template/images/signature.png"),
   companylocation: "Dresden",
   type: "study",
   blocknotice: false,
@@ -22,7 +22,7 @@
     API: "Application Programming Interface",
     HTTP: "Hypertext Transfer Protocol",
   ),
-  bibliography: bibliography("minimal.bib"),
+  bibliography: bibliography("literatur.bib"),
 )
 
 // number equations on the right side
@@ -45,7 +45,7 @@ Ein #gls("API") wird bei der ersten Verwendung ausgeschrieben, danach steht nur 
 
 == Zitate
 Ein indirektes Zitat.#vglcite(<cloudcomp>)[17-21]
-"Ein direktes Zitat."#bacite(<cloudcomp>)[29]
+"Ein direktes Zitat."#dhsncite(<cloudcomp>)[29]
 Die Kurzform funktioniert genauso.@rpa[115]
 Zwei Quellen an einer Stelle.#vglcite(<cloudcomp>)[40]#super[,]#vglcite(<rpa>)[120]
 
@@ -60,23 +60,23 @@ Nur die Nummer liefert #ref(<architektur>, supplement: none).
 
 = Abbildungen
 
-#bafigure(label: "architektur")[Eine Abbildung mit fester Breite][
-  #image("images/logo.png", width: 6cm)
+#dhsnfigure(label: "architektur")[Eine Abbildung mit fester Breite][
+  #image("../template/images/logo.png", width: 6cm)
 ]
 
-#bafigure(source: captioncite(<cloudcomp>)[12])[Zwei Bilder nebeneinander][
+#dhsnfigure(source: captioncite(<cloudcomp>)[12])[Zwei Bilder nebeneinander][
   #grid(
     columns: 2,
     gutter: 1cm,
     align: center + horizon,
-    image("images/logo.png", width: 5cm), image("images/signature.png", width: 5cm),
+    image("../template/images/logo.png", width: 5cm), image("../template/images/signature.png", width: 5cm),
     [a) Logo], [b) Unterschrift],
   )
 ]
 
 = Tabellen
 
-#batable(label: "vergleich")[Eine Tabelle mit Kopfzeile][
+#dhsntable(label: "vergleich")[Eine Tabelle mit Kopfzeile][
   #table(
     columns: (auto, 1fr, auto),
     align: (left, left, right),
@@ -87,7 +87,7 @@ Nur die Nummer liefert #ref(<architektur>, supplement: none).
   )
 ]
 
-#batable(source: [Beispiel GmbH])[Eine Tabelle nur mit waagerechten Linien][
+#dhsntable(source: [Beispiel GmbH])[Eine Tabelle nur mit waagerechten Linien][
   #table(
     columns: 3,
     stroke: (x, y) => (top: if y < 2 { 0.4pt }, bottom: 0.4pt),
@@ -101,15 +101,15 @@ Nur die Nummer liefert #ref(<architektur>, supplement: none).
 
 Im Text wird Quelltext mit Backticks gesetzt, z. B. `print()`.
 
-#bacode(label: "hello")[Quelltext direkt im Dokument][
+#dhsncode(label: "hello")[Quelltext direkt im Dokument][
   ```python
   def greet(name):
       print(f"Hello {name}!")
   ```
 ]
 
-#bacode(source: [Beispiel GmbH])[Quelltext aus einer Datei][
-  #raw(read("examples/hello.py"), lang: "python", block: true)
+#dhsncode(source: [Beispiel GmbH])[Quelltext aus einer Datei][
+  #raw(read("hello.py"), lang: "python", block: true)
 ]
 
 = Formeln
@@ -127,7 +127,7 @@ Ein Seitenumbruch wird mit `#pagebreak()` erzwungen.
 Die folgende Seite steht im Querformat, z. B. für breite Tabellen.
 
 #page(flipped: true)[
-  #batable[Eine breite Tabelle im Querformat][
+  #dhsntable[Eine breite Tabelle im Querformat][
     #table(
       columns: (1fr,) * 8,
       ..range(1, 25).map(i => [Zelle #i])
@@ -135,9 +135,9 @@ Die folgende Seite steht im Querformat, z. B. für breite Tabellen.
   ]
 ]
 
-#baappx[
-  #bafigure[Ein Bild im Anhang][
-    #image("images/logo.png", width: 4cm)
+#dhsnappx[
+  #dhsnfigure[Ein Bild im Anhang][
+    #image("../template/images/logo.png", width: 4cm)
   ]
   #pagebreak()
   #addtoappx[Ein Interviewleitfaden]

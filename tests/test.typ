@@ -1,8 +1,8 @@
 // Some sort of unit tests for the template
 // Compilation fails if an assertion does not hold: `typst compile test.typ`
-#import "lib.typ": *
+#import "../lib.typ": *
 
-#show: baarticle.with(
+#show: dhsnarticle.with(
   first: "firstname",
   last: "lastname",
   company: "comp",
@@ -71,12 +71,12 @@
     #"Title" (Quelle: #"Source")
   ])
 
-#bafigure("Test1")[Content2]
-#bafigure(source: "Source2", label: "thesecond")[Test2][Content]
-#bafigure(placement: bottom)[Test3][Content]
-#batable("Table1")[The Table]
-#batable(source: captioncite(<cloudcomp>)[12], placement: bottom)[Table2][The Table2]
-#bacode("Code1")[
+#dhsnfigure("Test1")[Content2]
+#dhsnfigure(source: "Source2", label: "thesecond")[Test2][Content]
+#dhsnfigure(placement: bottom)[Test3][Content]
+#dhsntable("Table1")[The Table]
+#dhsntable(source: captioncite(<cloudcomp>)[12], placement: bottom)[Table2][The Table2]
+#dhsncode("Code1")[
   ```python
   # a comment
   print("Hello World!")
@@ -89,16 +89,16 @@
 #context check("figures are listed", query(figure.where(kind: image)).len(), 3)
 
 References: @thesecond, @Table1, @Code1 and #link("https://typst.app")[a link].
-#gls("HTTP") and #gls("HTTP").#vglcite("cloudcomp", 3)#bacite(<cloudcomp>)
+#gls("HTTP") and #gls("HTTP").#vglcite("cloudcomp", 3)#dhsncite(<cloudcomp>)
 
 #newacronym("HTTP", "HTTP", "Hypertext Transfer Protocol")
 
-#baappx[
-  #bafigure("Appx1")[Content]
+#dhsnappx[
+  #dhsnfigure("Appx1")[Content]
   #addtoappx[Appx2]
-  #context check("appendix entries are counted", counter(figure.where(kind: "ba-appx")).get(), (2,))
+  #context check("appendix entries are counted", counter(figure.where(kind: "dhsn-appx")).get(), (2,))
   #context check("appendix entries are not listed as figures", query(figure.where(kind: image)).len(), 3)
   The last entry is #theappx().
 ]
 
-#bibliography("minimal.bib")
+#bibliography("../examples/literatur.bib")

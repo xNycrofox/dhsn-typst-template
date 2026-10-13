@@ -1,19 +1,18 @@
 ---
 title: Migrating from LaTeX
-sort: 3
 ---
 
 # Migrating from LaTeX
 
-This template is the counterpart of the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template) and keeps its names wherever possible.
+This template is the counterpart of the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template) and keeps its names wherever possible. The prefix `ba` of the functions and environments, which goes back to the former name of the university (Berufsakademie), is replaced with `dhsn`.
 The official [guide for LaTeX users](https://typst.app/docs/guides/guide-for-latex-users/) explains the general differences.
 
 ## Commands and environments
 
 | LaTeX                                         | Typst                                                     |
 | --------------------------------------------- | --------------------------------------------------------- |
-| `\documentclass[...]{baarticle}`              | `#show: baarticle.with(...)`                              |
-| `\documentclass[...,simple]{baarticle}` and `\begin{basimple}[...]` | `#show: basimple.with(...)`          |
+| `\documentclass[...]{baarticle}`              | `#show: dhsnarticle.with(...)`                              |
+| `\documentclass[...,simple]{baarticle}` and `\begin{basimple}[...]` | `#show: dhsnsimple.with(...)`          |
 | options `noheader`, `linkcoloring`            | `header: false`, `linkcoloring: true`                     |
 | `\mktitle{...}`, `\mkblocknotice{...}`, ...   | `#mktitle(...)`, `#mkblocknotice(...)`, ...               |
 | `\mkfrontmatter{...}`                         | `#mkfrontmatter[...]`                                     |
@@ -22,10 +21,10 @@ The official [guide for LaTeX users](https://typst.app/docs/guides/guide-for-lat
 | `\newacronym{id}{short}{long}`                | `acronyms: (short: "long")` or `#newacronym("id", "short", "long")` |
 | `\newglossaryentry{id}{...}`                  | `glossary: (id: (name: ..., description: ...))` or `#newglossaryentry(...)` |
 | `\gls{id}`                                    | `#gls("id")`                                              |
-| `\begin{bafigure}[source=S,label=L]{caption}` | `#bafigure(source: [S], label: "L")[caption][...]`        |
-| `\begin{batable}{caption}`, `\begin{bacode}{caption}` | `#batable[caption][...]`, `#bacode[caption][...]` |
-| `\begin{baappx}`, `\addtoappx{caption}`, `\theappx` | `#baappx[...]`, `#addtoappx[caption]`, `#theappx()` |
-| `\bacite[29]{key}`                            | `#bacite(<key>)[29]` or `@key[29]`                        |
+| `\begin{bafigure}[source=S,label=L]{caption}` | `#dhsnfigure(source: [S], label: "L")[caption][...]`        |
+| `\begin{batable}{caption}`, `\begin{bacode}{caption}` | `#dhsntable[caption][...]`, `#dhsncode[caption][...]` |
+| `\begin{baappx}`, `\addtoappx{caption}`, `\theappx` | `#dhsnappx[...]`, `#addtoappx[caption]`, `#theappx()` |
+| `\bacite[29]{key}`                            | `#dhsncite(<key>)[29]` or `@key[29]`                        |
 | `\vglcite[17-21]{key}`                        | `#vglcite(<key>)[17-21]`                                  |
 | `\captioncite{key}`                           | `#captioncite(<key>)`                                     |
 | `\addbibresource` and `\printbibliography`    | `bibliography: bibliography("document.bib")` or `#bibliography("document.bib")` |

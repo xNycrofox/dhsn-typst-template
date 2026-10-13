@@ -1,10 +1,10 @@
-#import "lib.typ": *
+#import "../lib.typ": *
 
-#show: baarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
+#show: dhsnarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
 
 #mktitle(
   title: "Test Report",
-  img: image("images/logo.png"),
+  img: image("../template/images/logo.png"),
   course: "science",
   number: 1234,
   corrector: ("corrector 1", "corrector 2"),
@@ -13,7 +13,7 @@
   type: "thesis",
 )
 #mkblocknotice(
-  signature: image("images/signature.png"),
+  signature: image("../template/images/signature.png"),
   date: today(),
   location: "Dresden",
 )
@@ -31,13 +31,13 @@ longlonglong longlonglong longlonglong longlonglong longlonglong longlonglong lo
 == pub
 
 = abc
-#bafigure[Image regarding section abc][
+#dhsnfigure[Image regarding section abc][
   The image.
 ]
 #pagebreak()
 
-#baappx[
-  #bafigure[Abc][
+#dhsnappx[
+  #dhsnfigure[Abc][
     asdasdas
   ]
   #addtoappx[Def]
@@ -47,10 +47,10 @@ longlonglong longlonglong longlonglong longlonglong longlonglong longlonglong lo
   eufzsiukefhabl@internal[7]
 ]
 
-#bibliography("minimal.bib")
+#bibliography("literatur.bib")
 longlonglong longlonglong longlonglong longlonglong longlonglong longlonglong longlonglong longlonglong
 
 #mkaffirmation(
-  signature: image("images/signature.png"),
+  signature: image("../template/images/signature.png"),
   date: today(),
 )

@@ -1,6 +1,5 @@
 ---
 title: Citations
-sort: 5
 ---
 
 # Citations and bibliography
@@ -65,36 +64,36 @@ This template covers the `@article`, `@book`, `@online`, `@collection`, `@incoll
 }
 ```
 
-```warning
- Additional attributes should not be required and may use a wrong formatting. The same holds true for other entry types. Be aware.
-```
+::: warning
+Additional attributes should not be required and may use a wrong formatting. The same holds true for other entry types. Be aware.
+:::
 
-```warning
- Typst ignores the `subtitle` attribute, so the subtitle has to be appended to the `title`. The names of the people publishing a `@collection` belong into the `editor` attribute.
-```
+::: warning
+Typst ignores the `subtitle` attribute, so the subtitle has to be appended to the `title`. The names of the people publishing a `@collection` belong into the `editor` attribute.
+:::
 
 Now one can create references in the `.typ` file.
-Referring to sources in the text can be achieved with the `#bacite(<citekey>)` function for direct citations and the `#vglcite(<citekey>)` function for indirect citations.
+Referring to sources in the text can be achieved with the `#dhsncite(<citekey>)` function for direct citations and the `#vglcite(<citekey>)` function for indirect citations.
 Quotation marks in the text are automatically converted to german ones.
 The optional content given to the cite functions in the brackets describes the pages, where the information can be found in the sources.
-`@citekey[29]` is a shorthand for `#bacite(<citekey>)[29]`.
+`@citekey[29]` is a shorthand for `#dhsncite(<citekey>)[29]`.
 Footnotes for citations and the final bibliography are generated automatically.
 In case one needs to chain multiple cite functions one after another, they should be separated using `#super[,]`.
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   bibliography: bibliography("document.bib"),
 )
 
 = Caption
 indirect citation.#vglcite(<cloudcomp>)[17-21]
-"direct citation"#bacite(<cloudcomp>)[29]
+"direct citation"#dhsncite(<cloudcomp>)[29]
 ```
 
-```warning
- Repeated citations of the same source are replaced with "ebenda". This also happens for the first citation on a page and after the source has been used with `captioncite` directly before. Check these cases manually.
-```
+::: warning
+Repeated citations of the same source are replaced with "ebenda". This also happens for the first citation on a page and after the source has been used with `captioncite` directly before. Check these cases manually.
+:::
 
 ## What the result looks like
 
@@ -103,7 +102,7 @@ The first citation of a source names the authors and the year. A citation direct
 | Code                                  | Footnote                                              |
 | ------------------------------------- | ----------------------------------------------------- |
 | `#vglcite(<cloudcomp>)[17-21]`        | Vgl. Rittinghouse, J. W./Ransome, J. F. (2018), S. 17-21. |
-| `#bacite(<cloudcomp>)[29]`            | ebenda, S. 29.                                        |
+| `#dhsncite(<cloudcomp>)[29]`            | ebenda, S. 29.                                        |
 | `@rpa[115]`                           | Czarnecki, C./Auth, G. (2018), S. 115.                |
 | `#vglcite(<cloudcomp>)`               | Vgl. Rittinghouse, J. W./Ransome, J. F. (2018).       |
 | `#captioncite(<cloudcomp>)[12]`       | no footnote, prints "Rittinghouse, J. W./Ransome, J. F. (2018), S. 12" in place |
@@ -131,11 +130,11 @@ Some details:
 The source of a figure, table or code must not create a footnote. Use `captioncite` for it.
 
 ```typst
-#bafigure(source: captioncite(<cloudcomp>)[12])[The caption][
+#dhsnfigure(source: captioncite(<cloudcomp>)[12])[The caption][
   #image("images/diagram.png")
 ]
 // in case the figure was modified
-#bafigure(source: [in Anlehnung an #captioncite(<cloudcomp>)[12]])[The caption][
+#dhsnfigure(source: [in Anlehnung an #captioncite(<cloudcomp>)[12]])[The caption][
   #image("images/diagram.png")
 ]
 ```

@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Motivation
-sort: 2
 ---
 
 # Motivation

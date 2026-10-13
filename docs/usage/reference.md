@@ -1,6 +1,5 @@
 ---
 title: Reference
-sort: 6
 ---
 
 # Reference
@@ -9,9 +8,9 @@ All functions provided by the template. Arguments without a default value in the
 
 ## Document setup
 
-### basimple
+### dhsnsimple
 
-Sets up the document and creates all parts around the content. Used as `#show: basimple.with(...)`. Described in [simple mode](./simple).
+Sets up the document and creates all parts around the content. Used as `#show: dhsnsimple.with(...)`. Described in [simple mode](./simple).
 
 | Argument          | Type                       | Default          | Description                                             |
 | ----------------- | -------------------------- | ---------------- | ------------------------------------------------------- |
@@ -47,11 +46,11 @@ Sets up the document and creates all parts around the content. Used as `#show: b
 
 The parts are created in this order: title page, assignment, block notice, AI notice, gender notice, abstract, table of contents, list of figures, abbreviations, glossary, list of tables, list of codes, **content**, bibliography, affirmation.
 
-### baarticle
+### dhsnarticle
 
-Sets up page, fonts, spacing, headings, lists, captions and the citation style without creating any content. Used as `#show: baarticle.with(...)`. Described in [normal mode](./normal).
+Sets up page, fonts, spacing, headings, lists, captions and the citation style without creating any content. Used as `#show: dhsnarticle.with(...)`. Described in [normal mode](./normal).
 
-Takes the arguments `first`, `last`, `company`, `location`, `linkcoloring`, `header`, `headertitle` and `codetheme` of `basimple`.
+Takes the arguments `first`, `last`, `company`, `location`, `linkcoloring`, `header`, `headertitle` and `codetheme` of `dhsnsimple`.
 
 ## Parts of the paper
 
@@ -80,10 +79,10 @@ All arguments except the one of `mkfrontmatter` are named, e.g. `#mkainotice(mod
 
 | Function                                                 | Description                                   |
 | -------------------------------------------------------- | --------------------------------------------- |
-| `bafigure(source: .., label: .., placement: ..)[caption][content]` | framed figure                       |
-| `batable(source: .., label: .., placement: ..)[caption][content]`  | table                               |
-| `bacode(source: .., label: ..)[caption][content]`        | code                                          |
-| `baappx[content]`                                        | appendix                                      |
+| `dhsnfigure(source: .., label: .., placement: ..)[caption][content]` | framed figure                       |
+| `dhsntable(source: .., label: .., placement: ..)[caption][content]`  | table                               |
+| `dhsncode(source: .., label: ..)[caption][content]`        | code                                          |
+| `dhsnappx[content]`                                        | appendix                                      |
 | `addtoappx[caption]`                                     | entry in the list of appendix entries         |
 | `theappx()`                                              | number of the last appendix entry             |
 
@@ -93,7 +92,7 @@ Described in [environments](./environments).
 
 | Function                       | Description                                                |
 | ------------------------------ | ---------------------------------------------------------- |
-| `bacite(key)[pages]`           | direct citation in a footnote                              |
+| `dhsncite(key)[pages]`           | direct citation in a footnote                              |
 | `vglcite(key)[pages]`          | indirect citation in a footnote, starting with "Vgl."      |
 | `captioncite(key)[pages]`      | citation without footnote for captions                     |
 

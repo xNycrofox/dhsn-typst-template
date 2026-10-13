@@ -15,5 +15,5 @@ LICENSE text eol=lf
 *.typ text eol=lf
 
 # images
-images/* binary
+
 template/images/* binary

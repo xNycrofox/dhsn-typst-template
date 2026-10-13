@@ -1,6 +1,5 @@
 ---
 title: Continuous Integration
-sort: 4
 ---
 
 # Continuous Integration
@@ -8,9 +7,9 @@ sort: 4
 If your paper is stored in a GitHub repository, GitHub Actions can compile it on every push and provide the PDF file.
 This ensures that the paper always compiles and that every version of it can be retrieved.
 
-```warning
- Please ensure you are allowed to use GitHub and keep the repository private.
-```
+::: warning
+Please ensure you are allowed to use GitHub and keep the repository private.
+:::
 
 Add the template as a [submodule](./template) in the directory `template` or copy its files into the repository, so that the paper compiles without a local package.
 Then create the file `.github/workflows/build.yml` with the following content.
@@ -35,4 +34,4 @@ jobs:
 
 The PDF file can be downloaded from the page of the workflow run.
 
-The [repository](https://github.com/xNycrofox/dhsn-typst-template) of the template uses the same mechanism to compile its examples and tests on every change, see `.github/workflows/test.yml`.
+The [repository](https://github.com/xNycrofox/dhsn-typst-template) of the template uses the same mechanism to compile its examples and tests on every change and to build this documentation, see `.github/workflows`.

@@ -1,13 +1,12 @@
 ---
 title: Typst
-sort: 1
 ---
 
 # Typst Setup
 
-```tip
+::: tip
 Typst provides an online-editor, the Typst web app. You can skip the whole local setup, if you choose to [use it](./webapp). Take care regarding confidential topics.
-```
+:::
 
 ## Compiler
 
@@ -47,9 +46,9 @@ To get a PDF file from Typst code compilation is required.
 A single run of a single program is sufficient: `typst compile document.typ`.
 Use `typst watch document.typ` to recompile the document automatically whenever a file changes.
 
-```note
- The bibliography, table of contents and all lists are created within that single run. There are no auxiliary files to clean up.
-```
+::: info
+The bibliography, table of contents and all lists are created within that single run. There are no auxiliary files to clean up.
+:::
 
 Useful options of the compiler:
 

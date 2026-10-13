@@ -4,14 +4,14 @@ This repository contains a [Typst](https://typst.app) template, which tries to f
 It is the Typst counterpart of the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template).
 **The template might do things wrong and there is no warranty. It is your own responsibility to check for correctness.**
 
-![Pages of the example document](docs/assets/examples/simple.png)
+[![Pages of the example document](https://xnycrofox.github.io/dhsn-typst-template/examples/simple.png)](https://xnycrofox.github.io/dhsn-typst-template/examples/simple.pdf)
 
 ## Usage
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "firstname",
   last: "lastname",
   company: "comp",
@@ -45,35 +45,42 @@ The source files are commented rather extensively.
 - `dhsn-intext.csl` is a variant of `dhsn.csl` used by `captioncite`.
 - `themes/` contains the `github-light` and `github-dark` themes used to highlight code.
 - `typst.toml` is the package manifest.
-- `template/` contains the starting point created by `typst init`.
-- `minimal.typ`, `simple.typ` and `cookbook.typ` are example documents, `examples/` contains files they include.
-- `docs/` contains the documentation, `docs/assets/examples/` the compiled examples shown there.
+- `template/` contains the starting point created by `typst init`, including the logo of the university and a placeholder for the signature.
+- `examples/` contains example documents, which use the images of `template/`.
+- `tests/` contains some sort of unit tests.
+- `docs/` contains the documentation.
 
-Modifications to the template can be tested by compiling the `minimal.typ`, `simple.typ` and `cookbook.typ` files.
-Some sort of unit tests are provided by the `test.typ` file. Its compilation fails if an assertion does not hold.
+## Development
+
+Modifications to the template can be tested by compiling the examples.
+The compilation of `tests/test.typ` fails if an assertion does not hold.
+The examples import the template from the parent directory, which requires passing the root of the repository to the compiler.
 
 ```sh
-typst compile minimal.typ
-typst compile simple.typ
-typst compile test.typ
+typst compile --root . tests/test.typ
+typst compile --root . examples/minimal.typ
+typst compile --root . examples/simple.typ
+typst compile --root . examples/cookbook.typ
 ```
 
 A GitHub Actions workflow compiles all of them on every push.
 
-The documentation is build from the `docs` folder and served via GitHub Pages.
+The documentation is built with [VitePress](https://vitepress.dev) from the `docs` folder and deployed to GitHub Pages by a GitHub Actions workflow.
+The examples shown in the documentation are compiled during that build.
+
+```sh
+cd docs
+npm install
+# compiles the examples into docs/public/examples
+npm run examples
+# starts a local server with live reload
+npm run dev
+```
 
 ## Formatting
 
 To ensure consistent formatting use the [`.editorconfig`](./.editorconfig) and [`.prettierrc`](./.prettierrc) files.
-
-The following file types are formatted using Prettier:
-
-- Markdown
-- YAML
-- Ruby
-- HTML
-
-All Typst related files are formatted using [`typstyle`](https://github.com/typstyle-rs/typstyle).
+Markdown, YAML and TypeScript files are formatted using Prettier, all Typst related files using [`typstyle`](https://github.com/typstyle-rs/typstyle).
 
 The following vs code extensions are helpful to format the files:
 
@@ -81,4 +88,9 @@ The following vs code extensions are helpful to format the files:
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)
 
-Originally crafted by [Nuckal777](https://github.com/Nuckal777).
+## Credits and License
+
+This template is based on the [DHSN Dresden LaTeX template](https://github.com/ba-dresden/ba-latex-template), originally crafted by [Nuckal777](https://github.com/Nuckal777) and maintained by its [contributors](https://github.com/ba-dresden/ba-latex-template/graphs/contributors). Layout, texts and behavior are taken from its `baarticle` document class.
+
+Like the LaTeX template this template is released into the public domain, see [LICENSE](https://github.com/xNycrofox/dhsn-typst-template/blob/main/LICENSE).
+The logo of the Duale Hochschule Sachsen in `template/images/logo.png` is not covered by that license. It belongs to the university and is included for use in papers handed in there. `template/images/signature.png` is a placeholder to be replaced with your own signature.

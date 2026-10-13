@@ -1,17 +1,16 @@
 ---
 title: Simple Mode
-sort: 2
 ---
 
 # Simple mode
 
-The template has a "simple mode", which is provided by the `basimple` function. It configures everything, so you do not have to worry about anything.
+The template has a "simple mode", which is provided by the `dhsnsimple` function. It configures everything, so you do not have to worry about anything.
 The "simple mode" is enabled with a show rule at the top of the document.
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "firstname",
   last: "lastname",
   company: "comp",
@@ -33,9 +32,9 @@ The "simple mode" is enabled with a show rule at the top of the document.
 Here is the content of paper.
 ```
 
-```note
- The template has no dependencies on other packages. Abbreviations, the glossary, citations and code highlighting are part of the template.
-```
+::: info
+The template has no dependencies on other packages. Abbreviations, the glossary, citations and code highlighting are part of the template.
+:::
 
 Let's go through the general options quickly:
 
@@ -48,7 +47,7 @@ Let's go through the general options quickly:
 - `headertitle` takes a value to overwrite the header with the new value
 - `codetheme` selects the theme of code blocks, see [environments](./environments)
 
-Let's also discuss the other options of the `basimple` function:
+Let's also discuss the other options of the `dhsnsimple` function:
 
 - `img` should be the logo of the university, e.g. `image("images/logo.png")`
 - `course` should be your course of studies
@@ -75,7 +74,7 @@ Let's also discuss the other options of the `basimple` function:
 To add an abstract to the paper the following should do it:
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   abstract: [
     content of the abstract
@@ -98,7 +97,7 @@ To define abbreviations use the `acronyms` parameter, which maps the short form 
 The first occurrence provides the full term. The list of abbreviations is sorted and contains only abbreviations, which are referred to.
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   acronyms: (
     HTTP: "Hypertext Transfer Protocol",
@@ -114,7 +113,7 @@ The first occurrence provides the full term. The list of abbreviations is sorted
 You can also define entries for a glossary with a short description of a term using the `glossary` parameter and refer to it with `#gls("identifier")`.
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   glossary: (
     cloud: (
@@ -142,19 +141,19 @@ As seen in @important.
 As seen in section #ref(<important>, supplement: none).
 ```
 
-Images can be included with `image`, which should be wrapped in a `bafigure`.
+Images can be included with `image`, which should be wrapped in a `dhsnfigure`.
 The number of a figure can be retrieved using a reference to the label provided to the function.
 If no label is given the caption is used as label, which requires `#ref(label("the caption"))` if it contains spaces.
 `image` has some optional arguments, e.g. for scaling images.
 Take a look [here](https://typst.app/docs/reference/visualize/image/).
-Tables should also be wrapped in a `batable`.
+Tables should also be wrapped in a `dhsntable`.
 
 ```typst
-#bafigure(label: "myfigure")[caption][
+#dhsnfigure(label: "myfigure")[caption][
   #image("path/to/an/image.png")
 ]
 As seen in @myfigure ...
-#batable[caption][
+#dhsntable[caption][
   // The page width is 16cm
   #table(
     columns: (6cm, 8cm),
@@ -164,13 +163,13 @@ As seen in @myfigure ...
 ]
 ```
 
-An appendix can be created using the `baappx` function, which will also create an overview of all appendix entries.
+An appendix can be created using the `dhsnappx` function, which will also create an overview of all appendix entries.
 Most functions introduced by this template feature some customization options, which are described in the [environments](./environments) section.
 
 ```typst
 // lots of content
-#baappx[
-  #bafigure[caption][
+#dhsnappx[
+  #dhsnfigure[caption][
     #image("path/to/an/image.png")
   ]
 ]
@@ -191,31 +190,31 @@ somedirectory
 This should work.
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(...)
+#show: dhsnsimple.with(...)
 
 #include "chapter1.typ"
 #include "chapter2.typ"
 #include "chapter3.typ"
 ```
 
-```note
- Each chapter file, which uses functions of the template like `bafigure` or `vglcite`, needs to import the template on its own.
-```
+::: info
+Each chapter file, which uses functions of the template like `dhsnfigure` or `vglcite`, needs to import the template on its own.
+:::
 
 ## Citations and bibliography
 
-Sources are cited with `#vglcite(<citekey>)[pages]` and `#bacite(<citekey>)[pages]`, the bibliography file is passed with `bibliography: bibliography("document.bib")`.
+Sources are cited with `#vglcite(<citekey>)[pages]` and `#dhsncite(<citekey>)[pages]`, the bibliography file is passed with `bibliography: bibliography("document.bib")`.
 Everything about it is described in the [citations](./citations) section.
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   ...,
   bibliography: bibliography("document.bib"),
 )
 
 = Caption
 indirect citation.#vglcite(<cloudcomp>)[17-21]
-"direct citation"#bacite(<cloudcomp>)[29]
+"direct citation"#dhsncite(<cloudcomp>)[29]
 ```

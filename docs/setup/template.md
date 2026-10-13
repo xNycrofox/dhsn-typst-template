@@ -1,6 +1,5 @@
 ---
 title: Template
-sort: 2
 ---
 
 # Template Setup
@@ -9,32 +8,32 @@ sort: 2
 
 This is the recommended way to use the template.
 Typst looks up local packages in a certain directory of your user account.
-Clone the template into that directory under the name `baarticle/0.1.0`.
+Clone the template into that directory under the name `dhsnarticle/0.1.0`.
 
 Windows (PowerShell):
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$env:APPDATA\typst\packages\local\baarticle\0.1.0"
+git clone https://github.com/xNycrofox/dhsn-typst-template "$env:APPDATA\typst\packages\local\dhsnarticle\0.1.0"
 ```
 
 macOS:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/baarticle/0.1.0"
+git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/Library/Application Support/typst/packages/local/dhsnarticle/0.1.0"
 ```
 
 Linux:
 
 ```sh
-git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/typst/packages/local/baarticle/0.1.0"
+git clone https://github.com/xNycrofox/dhsn-typst-template "$HOME/.local/share/typst/packages/local/dhsnarticle/0.1.0"
 ```
 
-```note
- Without git download the [ZIP file](https://github.com/xNycrofox/dhsn-typst-template/archive/refs/heads/main.zip) of the template and extract its content into that directory, so that `baarticle/0.1.0/typst.toml` exists.
-```
+::: info
+Without git download the [ZIP file](https://github.com/xNycrofox/dhsn-typst-template/archive/refs/heads/main.zip) of the template and extract its content into that directory, so that `dhsnarticle/0.1.0/typst.toml` exists.
+:::
 
-Now the template can be imported in any document with `#import "@local/baarticle:0.1.0": *`.
-A directory, where you will write your paper, can be created with `typst init @local/baarticle:0.1.0 somedirectory`.
+Now the template can be imported in any document with `#import "@local/dhsnarticle:0.1.0": *`.
+A directory, where you will write your paper, can be created with `typst init @local/dhsnarticle:0.1.0 somedirectory`.
 The directory structure should look like this:
 
 ```text
@@ -66,9 +65,9 @@ somedirectory
 
 ## GitHub Template
 
-```warning
- Please ensure you are allowed to use GitHub.
-```
+::: warning
+Please ensure you are allowed to use GitHub.
+:::
 
 Go to the templates [repository](https://github.com/xNycrofox/dhsn-typst-template) and click the green "Use this template" button.
 Follow the instructions.
@@ -96,8 +95,8 @@ Compile your paper afterwards and check the result, as the formatting may have c
 
 You need an image of your signature.
 Put it in the subfolder 'images' as signature.png of your project.
-The logo of the university is part of the template, see `images/logo.png`.
+The logo of the university is part of the template, see `template/images/logo.png`. `typst init` copies it into your project.
 
-```note
- Images and the bibliography are always loaded in your own document with `image("path")` and `bibliography("path")` and passed to the template. Typst resolves paths relative to the file they are written in, so the template cannot load files of your project by their path.
-```
+::: info
+Images and the bibliography are always loaded in your own document with `image("path")` and `bibliography("path")` and passed to the template. Typst resolves paths relative to the file they are written in, so the template cannot load files of your project by their path.
+:::

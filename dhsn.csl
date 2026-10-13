@@ -3,7 +3,7 @@
 <!-- Repeated citations are replaced with "ebenda", the template places citations in footnotes -->
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="de-DE" demote-non-dropping-particle="never">
   <info>
-    <title>DHSN Dresden (baarticle)</title>
+    <title>DHSN Dresden (dhsnarticle)</title>
     <id>https://github.com/xNycrofox/dhsn-typst-template/dhsn</id>
     <link href="https://github.com/xNycrofox/dhsn-typst-template" rel="documentation"/>
     <category citation-format="note"/>

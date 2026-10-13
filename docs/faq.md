@@ -1,6 +1,5 @@
 ---
 title: FAQ
-sort: 7
 ---
 
 # FAQ
@@ -16,9 +15,9 @@ Use `../images/logo.png` or a path starting at the directory of the main file li
 
 Typst only reads files within the directory of the main file. Pass a directory further up with `typst compile --root .. document.typ` if files next to that directory are required.
 
-### package not found (searched for @local/baarticle:0.1.0)
+### package not found (searched for @local/dhsnarticle:0.1.0)
 
-The template is not located in the directory for local packages or the directory has a wrong name. The file `typst.toml` has to be located directly in `.../typst/packages/local/baarticle/0.1.0/`. See [template setup](setup/template.md).
+The template is not located in the directory for local packages or the directory has a wrong name. The file `typst.toml` has to be located directly in `.../typst/packages/local/dhsnarticle/0.1.0/`. See [template setup](setup/template.md).
 
 ### label does not exist in the document
 
@@ -30,7 +29,7 @@ Two elements share a label, e.g. two figures with the same caption and no `label
 
 ### unknown variable
 
-A function of the template is used in a file without `#import "@local/baarticle:0.1.0": *` at the top. Each file needs the import.
+A function of the template is used in a file without `#import "@local/dhsnarticle:0.1.0": *` at the top. Each file needs the import.
 
 ### unknown font family
 
@@ -52,7 +51,7 @@ The list contains only abbreviations, which are used with `gls` at least once.
 
 ### The list of figures, tables or codes is missing
 
-Lists without an entry are omitted. Only `bafigure`, `batable` and `bacode` outside of the appendix add entries.
+Lists without an entry are omitted. Only `dhsnfigure`, `dhsntable` and `dhsncode` outside of the appendix add entries.
 
 ### A special character disappears or breaks the compilation
 
@@ -73,7 +72,7 @@ Use `headertitle: "A shorter title"` or `header: false`.
 
 ### A table or figure should break across pages
 
-`bafigure` and `batable` keep their content on one page. Split the content or put a `table` directly into the document.
+`dhsnfigure` and `dhsntable` keep their content on one page. Split the content or put a `table` directly into the document.
 
 ## Output
 

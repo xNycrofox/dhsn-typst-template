@@ -1,6 +1,6 @@
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "firstname",
   last: "lastname",
   company: "comp",
@@ -26,4 +26,4 @@ Here is the content of paper.
 #gls("HTTP") is a protocol on the OSI-Layer 7.#footnote[Also note that...]
 
 indirect citation.#vglcite(<cloudcomp>)[17-21]
-"direct citation"#bacite(<cloudcomp>)[29]
+"direct citation"#dhsncite(<cloudcomp>)[29]

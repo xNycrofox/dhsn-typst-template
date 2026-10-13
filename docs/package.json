@@ -1,0 +1,14 @@
+{
+  "name": "dhsn-typst-template-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "examples": "sh scripts/build-examples.sh",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}

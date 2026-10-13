@@ -3,7 +3,7 @@
 <!-- Variant used by captioncite, citations are placed in the text and never replaced with "ebenda" -->
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="de-DE" demote-non-dropping-particle="never">
   <info>
-    <title>DHSN Dresden (baarticle, in-text)</title>
+    <title>DHSN Dresden (dhsnarticle, in-text)</title>
     <id>https://github.com/xNycrofox/dhsn-typst-template/dhsn-intext</id>
     <link href="https://github.com/xNycrofox/dhsn-typst-template" rel="documentation"/>
     <category citation-format="author-date"/>

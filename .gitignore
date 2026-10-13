@@ -2,12 +2,7 @@
 *.pdf
 # keep pdf files, which are included into documents, by adding exceptions here
 # !assignment.pdf
-!docs/assets/**/*.pdf
 
-# Jekyll, used to build the documentation
-docs/_site
-docs/.jekyll-cache
-docs/.sass-cache
 
 # macOS: custom attributes in directory
 .DS_Store
@@ -15,3 +10,10 @@ docs/.sass-cache
 # editors
 .idea
 .vscode
+
+# VitePress, used to build the documentation
+docs/node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache
+# compiled examples, created by docs/scripts/build-examples.sh
+docs/public/examples

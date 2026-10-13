@@ -9,19 +9,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: typst-community/setup-typst@v4
       - name: Run tests
-        run: typst compile test.typ
+        run: typst compile --root . tests/test.typ
       - name: Compile examples
         run: |
-          typst compile minimal.typ
-          typst compile simple.typ
-          typst compile cookbook.typ
+          typst compile --root . examples/minimal.typ
+          typst compile --root . examples/simple.typ
+          typst compile --root . examples/cookbook.typ
       - name: Compile the starting point created by typst init
         run: |
-          mkdir -p packages/local/baarticle
-          ln -s "$PWD" packages/local/baarticle/0.1.0
-          typst init --package-path packages @local/baarticle:0.1.0 "$RUNNER_TEMP/paper"
-          typst compile --package-path packages "$RUNNER_TEMP/paper/document.typ"
+          mkdir -p "$RUNNER_TEMP/packages/local/dhsnarticle"
+          ln -s "$PWD" "$RUNNER_TEMP/packages/local/dhsnarticle/0.1.0"
+          typst init --package-path "$RUNNER_TEMP/packages" @local/dhsnarticle:0.1.0 "$RUNNER_TEMP/paper"
+          typst compile --package-path "$RUNNER_TEMP/packages" "$RUNNER_TEMP/paper/document.typ"
       - uses: actions/upload-artifact@v4
         with:
           name: examples
-          path: "*.pdf"
+          path: |
+            examples/*.pdf
+            tests/*.pdf

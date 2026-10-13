@@ -1,18 +1,18 @@
-#import "lib.typ": *
+#import "../lib.typ": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "firstname",
   last: "lastname",
   company: "comp",
   location: "Dresden",
-  img: image("images/logo.png"),
+  img: image("../template/images/logo.png"),
   course: "thecourse",
   title: "Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut",
   number: 1234567,
   corrector: ("corrector1", "corrector2"),
   themedate: today(),
   returndate: today(),
-  signature: image("images/signature.png"),
+  signature: image("../template/images/signature.png"),
   companylocation: "Dresden",
   type: "thesis",
   acronyms: (
@@ -57,7 +57,7 @@ And also very satisfying. #gls("HTTP")#gls("UC")#gls("ulong")
 #lorem(100)
 
 // sample table with text
-#batable[My first table][
+#dhsntable[My first table][
   #table(
     columns: (auto, 40%, 45%),
     align: left,
@@ -75,7 +75,7 @@ And also very satisfying. #gls("HTTP")#gls("UC")#gls("ulong")
 #lorem(100)
 
 // sample table with numbers
-#batable[My second table][
+#dhsntable[My second table][
   // Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
   #table(
     columns: 3,
@@ -88,20 +88,20 @@ And also very satisfying. #gls("HTTP")#gls("UC")#gls("ulong")
   )
 ]
 
-#bacode[Wonderful python code][
+#dhsncode[Wonderful python code][
   ```python
   print("Hello World!")
   ```
 ]
 
 // appendix
-#baappx[
-  #bafigure[An intresting addition][
+#dhsnappx[
+  #dhsnfigure[An intresting addition][
     #lorem(60)
 
     #lorem(60)
   ]
-  #bacode(label: "appendix-code")[Wonderful python code][
+  #dhsncode(label: "appendix-code")[Wonderful python code][
     ```python
     print("Hello World!")
     ```

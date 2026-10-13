@@ -1,6 +1,5 @@
 ---
 title: Typst Basics
-sort: 1
 ---
 
 # Typst Basics
@@ -63,7 +62,7 @@ Content is written in square brackets and can also be appended after the parenth
 #image("images/diagram.png", width: 14cm)
 #footnote[The content of the footnote.]
 // two content arguments, the caption and the figure itself
-#bafigure(source: [Company])[The caption][
+#dhsnfigure(source: [Company])[The caption][
   #image("images/diagram.png")
 ]
 ```
@@ -84,7 +83,7 @@ Each file, which uses functions of the template, needs that import.
 
 ```typst
 // if the template is installed as local package
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 // if the files of the template are located next to the document
 #import "lib.typ": *
 ```
@@ -94,7 +93,7 @@ Everything after that line is formatted by the template.
 `.with(...)` passes the options to the template.
 
 ```typst
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "firstname",
   last: "lastname",
   ...
@@ -117,7 +116,7 @@ The defaults of every function can be changed with set rules, which is rarely re
 Put them after the show rule of the template.
 
 ```typst
-#show: basimple.with(...)
+#show: dhsnsimple.with(...)
 // e.g. use thinner lines in all tables
 #set table(stroke: 0.4pt)
 ```
@@ -133,7 +132,7 @@ Some suggestions can be found in the [packages](./packages) section.
 - `typst compile document.typ` creates `document.pdf`
 - `typst watch document.typ` recompiles the document whenever a file changes
 - `typst fonts` lists all fonts Typst can use
-- `typst init @local/baarticle:0.1.0 somedirectory` creates a new paper from the template
+- `typst init @local/dhsnarticle:0.1.0 somedirectory` creates a new paper from the template
 
 Errors are reported with the file, line and a description. If there is an error no PDF file is created.
 Editors with the Tinymist extension and the [Typst web app](https://typst.app) show a live preview and the errors while typing.

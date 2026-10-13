@@ -1,6 +1,5 @@
 ---
 title: Bachelor Thesis
-sort: 1
 ---
 
 # Bachelor Thesis
@@ -22,9 +21,9 @@ thesis
 `thesis.typ`:
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: basimple.with(
+#show: dhsnsimple.with(
   first: "Erika",
   last: "Mustermann",
   company: "Beispiel GmbH",
@@ -66,8 +65,8 @@ thesis
 #include "chapters/basics.typ"
 #include "chapters/conclusion.typ"
 
-#baappx[
-  #bafigure[Architektur der Plattform][
+#dhsnappx[
+  #dhsnfigure[Architektur der Plattform][
     #image("images/logo.png", width: 10cm)
   ]
 ]
@@ -76,7 +75,7 @@ thesis
 `chapters/introduction.typ`:
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
 = Einleitung <einleitung>
 
@@ -91,20 +90,20 @@ Die Grundlagen werden in @grundlagen beschrieben.
 `chapters/basics.typ`:
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
 = Grundlagen <grundlagen>
 
-#bafigure(source: captioncite(<cloudcomp>)[12], label: "schichten")[Schichten einer Plattform][
+#dhsnfigure(source: captioncite(<cloudcomp>)[12], label: "schichten")[Schichten einer Plattform][
   #image("../images/logo.png", width: 8cm)
 ]
 
 Wie @schichten zeigt ...
 ```
 
-```note
- Paths are relative to the file they are written in. That is why the chapter refers to the image with `../images/logo.png`. `/images/logo.png` works in every file, as it starts at the directory of the main file.
-```
+::: info
+Paths are relative to the file they are written in. That is why the chapter refers to the image with `../images/logo.png`. `/images/logo.png` works in every file, as it starts at the directory of the main file.
+:::
 
 Compile the thesis with `typst compile thesis.typ`.
 

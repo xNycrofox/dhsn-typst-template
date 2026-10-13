@@ -1,6 +1,5 @@
 ---
 title: Normal Mode
-sort: 3
 ---
 
 # Normal mode
@@ -9,13 +8,13 @@ Not using the "simple mode" makes the usage of the template a bit more verbose, 
 Usually "normal mode" is only necessary if somebody has special requirements, which deviate from the styleguide, e.g. another order of the elements.
 
 Let's start with the basic document structure.
-The `baarticle` function sets up the page, fonts, spacing and the citation style called "dhsn", which should be used to get the citations and bibliography right.
+The `dhsnarticle` function sets up the page, fonts, spacing and the citation style called "dhsn", which should be used to get the citations and bibliography right.
 Its options are described in the "simple mode" [section](./simple).
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: baarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
+#show: dhsnarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
 // Additional packages and show rules should probably go here
 
 #mktitle(
@@ -72,9 +71,9 @@ It should be obvious that it is possible to move different elements from the beg
   - `signature` should be an image of your signature
   - `date` should be the date when the paper is handed in
 
-```note
- The title page, the notices and the affirmation are always placed on a page of their own without header and page number. The header shows the title given to `mktitle`.
-```
+::: info
+The title page, the notices and the affirmation are always placed on a page of their own without header and page number. The header shows the title given to `mktitle`.
+:::
 
 ## Using the abbreviations and the glossary of the template
 
@@ -82,9 +81,9 @@ If you decide to use the abbreviations of the template, define them with `newacr
 Both lists are only created if they have an entry, which is referred to with `gls`.
 
 ```typst
-#import "@local/baarticle:0.1.0": *
+#import "@local/dhsnarticle:0.1.0": *
 
-#show: baarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
+#show: dhsnarticle.with(first: "firstname", last: "lastname", company: "comp", location: "Dresden")
 
 #newacronym("HTTP", "HTTP", "Hypertext Transfer Protocol")
 #newglossaryentry(
