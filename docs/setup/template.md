@@ -92,7 +92,7 @@ Execute `git pull` in the directory of the template to get the newest state of t
 Compile your paper afterwards and check the result, as the formatting may have changed.
 
 Each version of the template is also published on the [Releases](https://github.com/xNycrofox/dhsn-typst-template/releases) page together with the compiled examples.
-A new version has a new number, e.g. `0.2.0`, and is installed next to the old one as `dhsnarticle/0.2.0`.
+A new version has a new number, e.g. `0.2.0`, and is installed next to the old one in a directory named after that number.
 Your paper keeps using the version named in its import until you change `#import "@local/dhsnarticle:0.1.0": *`, so an update never changes a paper by accident.
 
 ::: tip
